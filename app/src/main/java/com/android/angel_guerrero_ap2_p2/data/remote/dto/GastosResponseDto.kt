@@ -13,19 +13,19 @@ data class GastosRequest(
     val monto: Double
 )
 data class GastosResponse(
-    val gastoId: Int,
-    val fecha: String,
-    val suplidor: String,
-    val ncf: String,
-    val itbis: Double,
-    val monto: Double
-){
-    fun toDomain()= Gasto(
+    val gastoId: Int = 0,
+    val fecha: String? = null,
+    val suplidor: String? = null,
+    val ncf: String? = null,
+    val itbis: Double? = null,
+    val monto: Double? = null
+) {
+    fun toDomain() = Gasto(
         gastoId = gastoId,
-        fecha = fecha,
-        suplidor = suplidor,
+        fecha = fecha ?: "",
+        suplidor = suplidor ?: "",
         ncf = ncf ?: "",
-        itbis = itbis,
-        monto = monto
+        itbis = itbis ?: 0.0,
+        monto = monto ?: 0.0
     )
 }

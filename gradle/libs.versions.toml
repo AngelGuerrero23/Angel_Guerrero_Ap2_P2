@@ -23,6 +23,8 @@ room = "2.6.1"
 coil = "3.0.4"
 navigation3Runtime = "1.1.4"
 navigation3Ui = "1.1.4"
+material3 = "1.4.0"
+room3CompilerProcessingTesting = "3.0.0"
 
 [libraries]
 retrofit= {module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit"}
@@ -59,6 +61,8 @@ coil-network-okhttp = { module = "io.coil-kt.coil3:coil-network-okhttp", version
 kotlinx-coroutines-play-services = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-play-services", version.ref = "kotlinxCoroutines" }
 androidx-navigation3-runtime = { group = "androidx.navigation3", name = "navigation3-runtime", version.ref = "navigation3Runtime" }
 androidx-navigation3-ui = {group = "androidx.navigation3", name= "navigation3-ui", version.ref = "navigation3Ui"}
+androidx-material3 = { group = "androidx.compose.material3", name = "material3", version.ref = "material3" }
+androidx-room3-compiler-processing-testing = { group = "androidx.room3", name = "room3-compiler-processing-testing", version.ref = "room3CompilerProcessingTesting" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
