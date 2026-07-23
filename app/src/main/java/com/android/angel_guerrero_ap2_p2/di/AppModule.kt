@@ -1,6 +1,9 @@
 package com.android.angel_guerrero_ap2_p2.di
 
-import com.android.angel_guerrero_ap2_p2.data.ExamenApi
+import com.android.angel_guerrero_ap2_p2.data.GastoApi
+import com.android.angel_guerrero_ap2_p2.data.remote.remotedatasource.GastosRemoteDataSource
+import com.android.angel_guerrero_ap2_p2.data.repository.GastosRepositoryImpl
+import com.android.angel_guerrero_ap2_p2.domain.repository.GastosRepository
 import com.squareup.moshi.KotlinJsonAdapterFactory
 import com.squareup.moshi.Moshi
 import dagger.Module
@@ -26,12 +29,20 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideApi(moshi: Moshi): ExamenApi {
+    fun provideApi(moshi: Moshi): GastoApi {
         return Retrofit.Builder()
-            .baseUrl("")
+            .baseUrl("https://api-2026-h7eddqgydxc0fmau.eastus2-01.azurewebsites.net/")
             .addConverterFactory(MoshiConverterFactory.create(moshi))
             .build()
-            .create(ExamenApi::class.java)
+            .create(GastoApi::class.java)
+    }
+    @Provides
+    @Singleton
+    fun provideGastoRepository(
+        remoteDataSource: GastosRemoteDataSource
+    ): GastosRepository {
+        return GastosRepositoryImpl(remoteDataSource)
     }
 
 }
+
