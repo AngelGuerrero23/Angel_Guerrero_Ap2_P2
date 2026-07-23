@@ -11,12 +11,12 @@ class GastosRemoteDataSource @Inject constructor(
 ) {
 
     suspend fun getGastos(
-        fecha: String,
-        suplidor: String,
-        ncf: String,
-        itbis: Double,
-        monto: Double
-    ): Result<GastosResponseDto> {
+        fecha: String? = null,
+        suplidor: String? = null,
+        ncf: String? = null,
+        itbis: Double? = null,
+        monto: Double? = null
+    ): Result<List<GastosResponse>> {
         return try {
             val response = api.getGastos(fecha, suplidor, ncf, itbis, monto)
             if (response.isSuccessful && response.body() != null) {
@@ -24,10 +24,8 @@ class GastosRemoteDataSource @Inject constructor(
             } else {
                 Result.failure(Exception("Error de red, ${response.code()}: ${response.message()}"))
             }
-        } catch (e: HttpException) {
-            Result.failure(Exception("Error de servidor", e))
         } catch (e: Exception) {
-            Result.failure(Exception("Error desconocido", e))
+            Result.failure(e)
         }
     }
 
